@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, n, *args, **options):
 
-        Expense.objects.all().delete()
+        # Expense.objects.all().delete()
 
         for i in range(n):
             o = Expense(
