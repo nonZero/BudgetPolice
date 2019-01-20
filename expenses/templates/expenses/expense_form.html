@@ -1,0 +1,29 @@
+<h1>
+    Add new expense
+</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <ul>
+        <li>
+            Date:
+            <input type="text" name="date">
+        </li>
+        <li>
+            Title:
+            <input type="text" name="title">
+        </li>
+        <li>
+            Amount:
+            <input type="text" name="amount">
+        </li>
+        <li>
+            Description:
+            <textarea name="description"></textarea>
+        </li>
+        <li>
+            <button>Add</button>
+        </li>
+    </ul>
+
+</form>

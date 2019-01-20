@@ -15,3 +15,10 @@ def expense_detail(request, pk):
     return render(request, "expenses/expense_detail.html", {
         'object': o,
     })
+
+
+def expense_create(request):
+    if request.method == "POST":
+        assert False, request.POST
+    return render(request, "expenses/expense_form.html", {
+    })
