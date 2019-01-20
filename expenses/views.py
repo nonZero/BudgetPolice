@@ -1,6 +1,6 @@
 from django import forms
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import CreateView, FormView
 
 from expenses.models import Expense
 
@@ -19,29 +19,17 @@ def expense_detail(request, pk):
     })
 
 
-# class ExpenseForm(forms.ModelForm):
-#     class Meta:
-#         model = Expense
-#         fields = "__all__"
-#
-#
-#
-# def expense_create(request):
-#     if request.method == "POST":
-#         form = ExpenseForm(request.POST)
-#         if form.is_valid():
-#             # form.instance.amount = "99.99"
-#             form.instance.save()
-#             return redirect(form.instance)
-#
-#
-#     else:
-#         form = ExpenseForm()
-#
-#     return render(request, "expenses/expense_form.html", {
-#         'form': form,
-#     })
-
 class ExpenseCreateView(CreateView):
     model = Expense
     fields = "__all__"
+
+
+class MyForm(forms.Form):
+    are_you_sure = forms.BooleanField()
+
+
+class MyFormView(FormView):
+    form_class = MyForm
+
+    def form_valid(self, form):
+        assert False, form.cleaned_data
