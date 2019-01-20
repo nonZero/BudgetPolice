@@ -10,6 +10,7 @@ django = "*"
 ipython = "*"
 django-extensions = "*"
 silly = "*"
+django-bootstrap4 = "*"
 
 [requires]
 python_version = "3.7"

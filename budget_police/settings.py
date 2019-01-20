@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # 3rd PARTY
     "django_extensions",
+    "bootstrap4",
 
     # MINE
 

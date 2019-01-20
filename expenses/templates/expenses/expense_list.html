@@ -1,23 +1,14 @@
-{% load staticfiles %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}"/>
-    <link rel="stylesheet" href="{% static "style.css" %}"/>
+{% block title %}
+    Home
+{% endblock %}
 
-    <title>Hello, world!</title>
-</head>
-<body>
-
-<div class="container-fluid">
-
+{% block content %}
     <h1>My Expenses!!!!</h1>
 
-    <p><a class="btn btn-primary" href="{% url "expenses:create" %}">Create new expense</a></p>
+    <p><a class="btn btn-primary" href="{% url "expenses:create" %}">Create new
+        expense</a></p>
 
 
     <table class="table table-hover">
@@ -46,7 +37,4 @@
             </tr>
         {% endfor %}
     </table>
-</div>
-
-</body>
-</html>
+{% endblock %}

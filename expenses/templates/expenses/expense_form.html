@@ -1,17 +1,21 @@
-<h1>
-    Add new expense
-</h1>
+{% extends "base.html" %}
+{% load bootstrap4 %}
 
-<form method="post" novalidate>
-    {% csrf_token %}
-    <ul>
+{% block title %}
+    Add New Expense
+{% endblock %}
 
-        {{ form.as_ul }}
+{% block content %}
+    <h1>
+        Add new expense
+    </h1>
 
+    <form method="post" novalidate>
+        {% csrf_token %}
 
-        <li>
-            <button>Add</button>
-        </li>
-    </ul>
+        {% bootstrap_form form %}
 
-</form>
+        <button>Add</button>
+
+    </form>
+{% endblock %}
