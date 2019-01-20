@@ -2,6 +2,8 @@ from django.db import models
 
 
 # ORM: Object-Relational-Mapper
+from django.urls import reverse
+
 
 class Expense(models.Model):
     date = models.DateField()
@@ -11,3 +13,6 @@ class Expense(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("expenses:detail", args=(self.id,))

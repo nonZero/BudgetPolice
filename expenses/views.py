@@ -1,5 +1,5 @@
 from django import forms
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from expenses.models import Expense
 
@@ -18,22 +18,21 @@ def expense_detail(request, pk):
     })
 
 
-class ExpenseForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    amount = forms.DecimalField(decimal_places=2, max_digits=10, required=False)
-    are_you_sure = forms.BooleanField()
-    flavours = forms.MultipleChoiceField(choices=(
-        (1, 'Vanilla'),
-        (2, 'Strwberry'),
-        (3, 'Chochlate'),
-    ))
+class ExpenseForm(forms.ModelForm):
+    class Meta:
+        model = Expense
+        fields = "__all__"
 
 
 def expense_create(request):
     if request.method == "POST":
         form = ExpenseForm(request.POST)
         if form.is_valid():
-            assert False, form.cleaned_data
+            # form.instance.amount = "99.99"
+            form.instance.save()
+            return redirect(form.instance)
+
+
     else:
         form = ExpenseForm()
 
