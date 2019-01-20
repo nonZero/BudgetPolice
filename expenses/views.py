@@ -1,14 +1,19 @@
 from django import forms
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, ListView
 
 from expenses.models import Expense
 
 
-def expense_list(request):
-    return render(request, "expenses/expense_list.html", {
-        'object_list': Expense.objects.order_by('-date', '-id'),
-    })
+class ExpenseListView(ListView):
+    model = Expense
+    ordering = ("-date", "-id")
+    # paginate_by = 10
+
+# def expense_list(request):
+#     return render(request, "expenses/expense_list.html", {
+#         'object_list': Expense.objects.order_by('-date', '-id'),
+#     })
 
 
 def expense_detail(request, pk):
