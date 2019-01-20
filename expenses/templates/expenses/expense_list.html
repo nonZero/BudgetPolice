@@ -1,6 +1,16 @@
-x={{ x }}
+<h1>My Expenses!!!!</h1>
 <ul>
-{% for item in y %}
-    <li>{{ item }}, {{ item.amount }}</li>
-{%  endfor %}
+    <li>
+        x={{ x }}
+    </li>
+    <li>
+        stam={{ stam }}
+    </li>
+
+    {% for color in stam  %}
+        <li>
+            {{ color }}
+        </li>
+    {% endfor %}
 </ul>
+
