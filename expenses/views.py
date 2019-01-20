@@ -6,7 +6,5 @@ from expenses.models import Expense
 
 def expense_list(request):
     return render(request, "expenses/expense_list.html", {
-        'x': 123,
-        'y': Expense.objects.all(),
-        'stam': ['red', 'green', 'blue'],
+        'object_list': Expense.objects.order_by('-date', '-id'),
     })
