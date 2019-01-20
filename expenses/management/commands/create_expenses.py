@@ -20,6 +20,6 @@ class Command(BaseCommand):
                 date=f"20{random.randint(15,25)}-{random.randint(1,12):02d}-{random.randint(1,25):02d}",
                 title=silly.thing() ,
                 amount=f"{random.randint(1, 1000)}.{random.randint(0,99)}",
-                description=silly.paragraph(),
+                description="\n".join(silly.paragraph() for i in range(random.randint(2,5))),
             )
             o.save()

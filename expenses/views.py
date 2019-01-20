@@ -1,5 +1,4 @@
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from expenses.models import Expense
 
@@ -7,4 +6,12 @@ from expenses.models import Expense
 def expense_list(request):
     return render(request, "expenses/expense_list.html", {
         'object_list': Expense.objects.order_by('-date', '-id'),
+    })
+
+
+def expense_detail(request, pk):
+    o = get_object_or_404(Expense, pk=pk)
+
+    return render(request, "expenses/expense_detail.html", {
+        'object': o,
     })
